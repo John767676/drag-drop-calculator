@@ -1,0 +1,12 @@
+.switcher__wrapper {
+    width: 243px;
+    height: 38px;
+}
+.switcher__run {
+    border-radius: 5px;
+    border: none;
+}
+.switcher__con {
+    border-radius: 5px;
+    border: none;
+}

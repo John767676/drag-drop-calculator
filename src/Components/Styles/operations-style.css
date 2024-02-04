@@ -1,0 +1,25 @@
+.operations__wrapper {
+    width: 240px;
+    height: 56px;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.10), 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+}
+.operation__item {
+    width: 52px;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #E2E3E5;
+    position: relative;
+}
+.operation__symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
