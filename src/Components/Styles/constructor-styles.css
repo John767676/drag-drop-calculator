@@ -1,4 +1,8 @@
 .constructor__wrapper {
+    width: 252px;
+    height: 470px;
+    border: 2px dashed black;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
 }

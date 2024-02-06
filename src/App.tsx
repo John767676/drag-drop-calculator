@@ -3,14 +3,11 @@ import './Components/Styles/constructor-styles.css'
 import './Components/Styles/drag_styles.css'
 import {useAppSelector} from "./hooks/useAppSelector";
 import {useAppDispatch} from "./hooks/useAppDispatch";
-import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
-import BrickImage from "./Components/Bricks/BrickImage";
+import {DragDropContext, Draggable, DragStart, Droppable, DropResult} from "react-beautiful-dnd";
+import EmptyDrag from "./EmptyDrag";
+
 
 const App:React.FC = () => {
-
-    // const dispatch = useAppDispatch()
-    //
-    // const {dropList} = useAppSelector(state => state.drag)
 
     type bricksType = {
         id: string,
@@ -23,29 +20,29 @@ const App:React.FC = () => {
         order: number
     }
 
-    const bricks:bricksType[] = [
+    const bricksInitialState:bricksType[] = [
         {
             id: 'col-1',
             items: [
                 {
                     id: 'display',
-                    path: './Group8.png',
-                    order: 1,
+                    path: 'Group8.png',
+                    order: 0,
                 },
                 {
                     id: 'operations',
-                    path: './Group7.png',
-                    order: 2,
+                    path: 'Group7.png',
+                    order: 1,
                 },
                 {
                     id: 'keyboard',
-                    path: './Group6.png',
-                    order: 3,
+                    path: 'Group6.png',
+                    order: 2,
                 },
                 {
                     id: 'result',
-                    path: './Group5.png',
-                    order: 4
+                    path: 'Group5.png',
+                    order: 3
                 }
             ]
         },
@@ -53,107 +50,100 @@ const App:React.FC = () => {
             id: 'col-2',
             items: []
         }
-
     ]
 
-    const [items, setItems] = useState(bricks)
+    const [bricks, setBricks] = useState(bricksInitialState)
+    const [stub, setStub] = useState([])
 
     const handleDragAndDrop = (results:DropResult) => {
 
-        console.log(results);
-
-        const { source, destination} = results;
+        const {source, destination} = results;
 
         if (!destination) return;
-        // если нет назначение то ничего не делаем
 
         if (source.droppableId === destination.droppableId && source.index === destination.index) return;
-        // так же ничего не делаем если индекс назначения равен индексу источника
+
+
+        if (source.droppableId === 'col-2' && destination.droppableId === 'col-1') {
+            return alert('Double click on element to remove')
+        }
 
         if (destination.droppableId === 'col-1') return;
 
         const itemSourceIndex = source.index;
-        // индекс источника
         const itemDestinationIndex = destination.index;
-        // индекс назначения
 
-        const itemsSourceIndex = items.findIndex((item) => item.id === source.droppableId);
-        // storeSourceIndex будет содержать индекс элемента в массиве items, у которого id равен source.droppableId.
-        // storeDestinationIndex будет содержать индекс элемента в массиве items, у которого id равен destination.droppableId.
+        const itemsSourceIndex = bricks.findIndex((item) => item.id === source.droppableId);
+        const itemsDestinationIndex = bricks.findIndex((item) => item.id === destination.droppableId);
 
-        const itemsDestinationIndex = items.findIndex((item) => item.id === destination.droppableId);
-        // аналогично с destination
-
-        const newSourceItems = [...items[itemsSourceIndex].items];
-        const newDestinationItems = source.droppableId !== destination.droppableId ? [...items[itemsDestinationIndex].items] : newSourceItems;
-        // newSourceItems и newDestinationItems создают копии массивов элементов из исходных списков.
-        // Если source.droppableId и destination.droppableId разные, то newDestinationItems будет копией элементов из списка назначения.
-        // В противном случае он будет копией элементов из исходного списка.
+        const newSourceItems = [...bricks[itemsSourceIndex].items];
+        const newDestinationItems = source.droppableId !== destination.droppableId ? [...bricks[itemsDestinationIndex].items] : newSourceItems;
 
         const [deletedItem] = newSourceItems.splice(itemSourceIndex, 1);
-        // С помощью splice из newSourceItems удаляется элемент с индексом itemSourceIndex.
         newDestinationItems.splice(itemDestinationIndex, 0, deletedItem);
-        // Затем этот удаленный элемент вставляется в newDestinationItems на позицию с индексом itemDestinationIndex.
-        const newStores = [...items];
-        // Создается новый массив newStores, который является копией исходного массива items.
+
+        const newStores = [...bricks];
 
         newStores[itemsSourceIndex] = {
-            ...items[itemsSourceIndex],
-            items: newSourceItems,
+            ...bricks[itemsSourceIndex],
+            items: newSourceItems
         };
         newStores[itemsDestinationIndex] = {
-            ...items[itemsDestinationIndex],
+            ...bricks[itemsDestinationIndex],
             items: newDestinationItems,
         };
-        // В newStores обновляются элементы с индексами storeSourceIndex и storeDestinationIndex.
-        // Их свойство items обновляется соответствующими значениями newSourceItems и newDestinationItems.
 
-        setItems(newStores);
+        setBricks(newStores);
     };
 
+    function handleDoubleClick(obj: itemType, index: number) {
+
+        const tempArray = [...bricks]
+        const newItems = [...bricks[0].items]
+
+        const [deleteItem] = tempArray[1].items.splice(index, 1)
+        newItems.splice(obj.order,0,deleteItem)
+
+        tempArray[0] = {
+            ...bricks[0],
+            items: newItems
+        };
+        tempArray[1] = {
+            ...bricks[1],
+            items: [...tempArray[1].items]
+        };
+
+        setBricks(tempArray)
+    }
+
+    function handleDragStart (result: DragStart) {
+
+    }
+
     return (
+        <div className="layout">
             <div className="wrapper">
                 <DragDropContext onDragEnd={handleDragAndDrop}>
-                        {bricks.map(brick => <Droppable
-                            droppableId={brick.id}
-                            type='brick'
-                            key={brick.id}
-                        >
+                        {bricks.map(brick => <Droppable droppableId={brick.id} type='brick' key={brick.id} >
                             {provided => (
-                                <div className={brick.id === 'col-1' ? 'constructor__wrapper' : 'drag__wrapper'} {...provided.droppableProps} ref={provided.innerRef}>
-                                    {brick.items.map((el, index) => <Draggable
-                                        draggableId={el.id} index={index}
-                                        key={el.id}
-                                        isDragDisabled={brick.id === 'col-2' ? el.order === index : false}
-                                    >
-                                        {(provided) => (
-                                            <div className='img__wrapper' {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                                                <BrickImage url={el.path} order={el.order} id={el.id}/>
-                                            </div>
-                                        )}
-                                    </Draggable>)}
+                                <div className={brick.id === 'col-1' ? 'constructor__wrapper' : 'drag__wrapper'} style={brick.items.length > 0 ? {justifyContent: 'start'} : undefined} {...provided.droppableProps} ref={provided.innerRef}>
+                                    {brick.items.length > 0 ? brick.items.map((el, index) =>
+                                        <Draggable draggableId={el.id} index={index} key={el.id} isDragDisabled={brick.id === 'col-2' && el.id === 'display'}>
+                                            {(provided) => (
+                                                <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onDoubleClick={brick.id === 'col-2' ? () => handleDoubleClick(el, index) : undefined}>
+                                                    <img src={require(`./Components/Bricks/${el.path}`)} alt={`${el.id}`}/>
+                                                </div>
+                                            )}
+                                    </Draggable>) : brick.id === 'col-2' ? <EmptyDrag/> : null
+                                    }
                                     {provided.placeholder}
                                 </div>
                             )}
                         </Droppable>)}
                 </DragDropContext>
             </div>
+        </div>
     );
 };
 
 export default App;
-            //     <div className='constructor__wrapper'>
-            //         <div className="drag__wrapper">
-            //             <p className="dra__img">
-            //                     <img src={require('./Components/Bricks/Group.png')} alt="logo"/>
-            //                 </p>
-            //                     <div className="drag__text">
-            //                         <h1 className="drag__title">
-            //                             Перетащите сюда
-            //                         </h1>
-            //                         <p className="drag__text-p">
-            //                             любой элемент <br/> из левой панели
-            //                         </p>
-            //                     </div>
-            //         </div>
-            //     </div>
