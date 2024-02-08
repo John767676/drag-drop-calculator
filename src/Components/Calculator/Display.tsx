@@ -10,7 +10,7 @@ const Display:React.FC = () => {
     return (
             <div className="display__wrapper">
                 <div className="display__inner-wrapper">
-                    <span className="display__result">
+                    <span className="display__result" style={result.toString().length > 15 ? {justifyContent: 'flex-start', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '16px'} : undefined}>
                         {result}
                     </span>
                 </div>

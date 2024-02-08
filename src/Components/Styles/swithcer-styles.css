@@ -1,12 +1,30 @@
 .switcher__wrapper {
+    position: absolute;
     width: 243px;
     height: 38px;
+    background-color: #F3F4F6;
+    border-radius: 6px;
+    top: 4%;
+    right: 31.5%;
 }
-.switcher__run {
+
+.switcher__container {
+    display: flex;
+}
+
+.switcher__run, .switcher__con{
+    font-size: 14px;
+    width: 108px;
+    height: 36px;
     border-radius: 5px;
     border: none;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #4D5562;
 }
 .switcher__con {
-    border-radius: 5px;
-    border: none;
+    width: 133px;
 }

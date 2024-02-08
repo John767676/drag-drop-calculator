@@ -1,12 +1,11 @@
 .operations__wrapper {
     width: 240px;
     height: 56px;
-    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.10), 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.06);
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    cursor: grab;
     user-select: none;
 }
 .operation__item {
@@ -15,7 +14,18 @@
     border-radius: 5px;
     border: 1px solid #E2E3E5;
     position: relative;
+    transition: all 150ms ease-in-out;
 }
+
+.operation__item:hover {
+    scale: 1.05;
+    background-color: #f8f8f8;
+}
+
+.operation__item:active {
+    scale: 0.98;
+}
+
 .operation__symbol {
     position: absolute;
     top: 50%;

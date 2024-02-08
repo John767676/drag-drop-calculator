@@ -29,3 +29,10 @@ code {
   gap: 56px;
 }
 
+.stub__wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+

@@ -4,14 +4,21 @@ import { LuEye } from "react-icons/lu";
 import { PiBracketsAngleLight } from "react-icons/pi";
 import {useAppDispatch} from "../hooks/useAppDispatch";
 import {setProcess} from "../store/Slices/calculatorSlice";
+import {useAppSelector} from "../hooks/useAppSelector";
 
 const Switcher:React.FC = () => {
+
+
     const dispatch = useAppDispatch()
+
+    const {process} = useAppSelector(state => state.calculator)
+
+
     return (
         <div className="switcher__wrapper">
             <div className="switcher__container">
-                <button className='switcher__run' onClick={() => dispatch(setProcess('run'))}><LuEye/>Runtime</button>
-                <button className='switcher__con' onClick={() => dispatch(setProcess('con'))}><PiBracketsAngleLight/>Constructor</button>
+                <button style={process === 'run' ? {backgroundColor: 'white', border: '1px solid #E2E3E5'} : undefined} className='switcher__run' onClick={() => dispatch(setProcess('run'))}><i><LuEye size={16} color={process === 'run' ? '#5D5FEF' : undefined}/></i><span>Runtime</span></button>
+                <button style={process === 'con' ? {backgroundColor: 'white', border: '1px solid #E2E3E5'} : undefined} className='switcher__con' onClick={() => dispatch(setProcess('con'))}><i><PiBracketsAngleLight size={16} color={process === 'con' ? '#5D5FEF' : undefined}/></i><span>Constructor</span></button>
             </div>
         </div>
     );

@@ -5,14 +5,19 @@ import '../Styles/operations-style.css'
 
 const Operations:React.FC = () => {
 
-    const operations = [
+    type operationType = {
+        symbol: string,
+        operation: 'plus' | 'minus' | 'div' | 'mul'
+    }
+
+    const operations: operationType[] = [
         {
             symbol: '/',
-            operation: 'divide'
+            operation: 'div'
         },
         {
             symbol: 'x',
-            operation: 'multiple'
+            operation: 'mul'
         },
         {
             symbol: '-',
@@ -25,7 +30,7 @@ const Operations:React.FC = () => {
     ]
 
     return (
-        <div className="operations__wrapper" style={{cursor: 'grab'}}>
+        <div className="operations__wrapper">
             {operations.map((operator,i) => (<OperatorItem symbol={operator.symbol} operation={operator.operation} key={i}/>))}
         </div>
     );

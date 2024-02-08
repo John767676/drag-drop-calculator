@@ -2,12 +2,18 @@ import React, {useState} from 'react';
 import './Components/Styles/constructor-styles.css'
 import './Components/Styles/drag_styles.css'
 import {useAppSelector} from "./hooks/useAppSelector";
-import {useAppDispatch} from "./hooks/useAppDispatch";
-import {DragDropContext, Draggable, DragStart, Droppable, DropResult} from "react-beautiful-dnd";
+import {DragDropContext, Draggable, Droppable, DropResult} from "react-beautiful-dnd";
 import EmptyDrag from "./EmptyDrag";
+import Switcher from "./Components/Switcher";
+import Display from "./Components/Calculator/Display";
+import Result from "./Components/Calculator/Result";
+import Keyboard from "./Components/Calculator/Keyboard";
+import Operations from "./Components/Calculator/Operations";
 
 
 const App:React.FC = () => {
+
+    const {process} = useAppSelector(state => state.calculator)
 
     type bricksType = {
         id: string,
@@ -20,31 +26,33 @@ const App:React.FC = () => {
         order: number
     }
 
+    const itemsInitial:itemType[] = [
+        {
+            id: 'display',
+            path: 'Group8.png',
+            order: 0,
+        },
+        {
+            id: 'operations',
+            path: 'Group7.png',
+            order: 1,
+        },
+        {
+            id: 'keyboard',
+            path: 'Group6.png',
+            order: 2,
+        },
+        {
+            id: 'result',
+            path: 'Group5.png',
+            order: 3
+        }
+    ]
+
     const bricksInitialState:bricksType[] = [
         {
             id: 'col-1',
-            items: [
-                {
-                    id: 'display',
-                    path: 'Group8.png',
-                    order: 0,
-                },
-                {
-                    id: 'operations',
-                    path: 'Group7.png',
-                    order: 1,
-                },
-                {
-                    id: 'keyboard',
-                    path: 'Group6.png',
-                    order: 2,
-                },
-                {
-                    id: 'result',
-                    path: 'Group5.png',
-                    order: 3
-                }
-            ]
+            items: itemsInitial
         },
         {
             id: 'col-2',
@@ -53,7 +61,6 @@ const App:React.FC = () => {
     ]
 
     const [bricks, setBricks] = useState(bricksInitialState)
-    const [stub, setStub] = useState([])
 
     const handleDragAndDrop = (results:DropResult) => {
 
@@ -116,15 +123,14 @@ const App:React.FC = () => {
         setBricks(tempArray)
     }
 
-    function handleDragStart (result: DragStart) {
-
-    }
 
     return (
         <div className="layout">
+            <Switcher/>
             <div className="wrapper">
-                <DragDropContext onDragEnd={handleDragAndDrop}>
-                        {bricks.map(brick => <Droppable droppableId={brick.id} type='brick' key={brick.id} >
+                {process === 'con' ?
+                    <DragDropContext onDragEnd={handleDragAndDrop}>
+                        {bricks.map(brick => <Droppable droppableId={brick.id} type='brick' key={brick.id}>
                             {provided => (
                                 <div className={brick.id === 'col-1' ? 'constructor__wrapper' : 'drag__wrapper'} style={brick.items.length > 0 ? {justifyContent: 'start'} : undefined} {...provided.droppableProps} ref={provided.innerRef}>
                                     {brick.items.length > 0 ? brick.items.map((el, index) =>
@@ -134,13 +140,34 @@ const App:React.FC = () => {
                                                     <img src={require(`./Components/Bricks/${el.path}`)} alt={`${el.id}`}/>
                                                 </div>
                                             )}
-                                    </Draggable>) : brick.id === 'col-2' ? <EmptyDrag/> : null
+                                        </Draggable>) : brick.id === 'col-2' ? <EmptyDrag/> : null
                                     }
                                     {provided.placeholder}
                                 </div>
                             )}
                         </Droppable>)}
-                </DragDropContext>
+                    </DragDropContext>
+                    :
+                    <>
+                        <div className="constructor__wrapper"></div>
+                        <div className='drag__wrapper' style={{justifyContent: 'start', gap: '16px'}}>
+                            {bricks[1].items.map(item => {
+                                switch (item.id) {
+                                    case 'display':
+                                        return <Display key={item.id}/>
+                                    case 'operations':
+                                        return <Operations key={item.id}/>
+                                    case 'keyboard':
+                                        return <Keyboard key={item.id}/>
+                                    case 'result':
+                                        return <Result key={item.id}/>
+                                    default:
+                                        return null
+                                }
+                            })}
+                        </div>
+                    </>
+                }
             </div>
         </div>
     );
