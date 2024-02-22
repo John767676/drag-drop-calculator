@@ -28,3 +28,31 @@
 .switcher__con {
     width: 142px;
 }
+
+@media (max-width: 768px) {
+    .switcher__wrapper {
+        width: 210px;
+        height: 32px;
+    }
+    .switcher__run, .switcher__con {
+        width: 95px;
+        height: 32px;
+    }
+    .switcher__con {
+        width: 118px;
+    }
+}
+
+@media (max-width: 576px) {
+    .switcher__wrapper {
+        width: 180px;
+        height: 27px;
+    }
+    .switcher__run, .switcher__con {
+        width: 81px;
+        height: 27px;
+    }
+    .switcher__con {
+        width: 101px;
+    }
+}

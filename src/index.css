@@ -32,3 +32,15 @@ code {
   display: flex;
   gap: 56px;
 }
+
+@media (max-width: 768px) {
+  .brick__img {
+    width: 210px;
+  }
+}
+
+@media (max-width: 576px) {
+  .brick__img {
+    width: 180px;
+  }
+}

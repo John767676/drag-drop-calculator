@@ -164,7 +164,7 @@ const App:React.FC = () => {
                                             <Draggable draggableId={el.id} index={index} key={el.id}>
                                                 {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
                                                     <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onDoubleClick={brick.id === 'col-2' ? () => handleDoubleClick(el, index) : undefined}   style={getStyle(provided.draggableProps.style, snapshot)}>
-                                                        <img src={require(`./Components/Bricks/${el.path}`)} alt={`${el.id}`}/>
+                                                        <img className='brick__img' src={require(`./Components/Bricks/${el.path}`)} alt={`${el.id}`}/>
                                                     </div>
                                                 )}
                                             </Draggable>) : brick.id === 'col-2' ? <EmptyDrag/> : null

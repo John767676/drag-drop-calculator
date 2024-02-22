@@ -24,3 +24,17 @@
     color: #6B7280;
     font-size: 16px;
 }
+
+@media (max-width: 768px) {
+    .drag__wrapper {
+        width: 210px;
+        height: 392px;
+    }
+}
+
+@media (max-width: 576px) {
+    .drag__wrapper {
+        width: 180px;
+        height: 336px;
+    }
+}
