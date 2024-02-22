@@ -20,19 +20,15 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #ffffff;
+}
+
+.container {
+  display: grid;
+  gap: 15px;
 }
 
 .wrapper {
-  width: 600px;
-  height: 500px;
   display: flex;
   gap: 56px;
 }
-
-.stub__wrapper {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-

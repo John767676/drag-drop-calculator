@@ -1,21 +1,21 @@
 .switcher__wrapper {
-    position: absolute;
-    width: 243px;
+    justify-self: flex-end;
+    width: 256px;
     height: 38px;
     background-color: #F3F4F6;
     border-radius: 6px;
-    top: 4%;
-    right: 31.5%;
 }
 
 .switcher__container {
     display: flex;
+    align-items: center;
+    justify-items: center;
 }
 
 .switcher__run, .switcher__con{
     font-size: 14px;
-    width: 108px;
-    height: 36px;
+    width: 114px;
+    height: 38px;
     border-radius: 5px;
     border: none;
     text-align: center;
@@ -26,5 +26,5 @@
     color: #4D5562;
 }
 .switcher__con {
-    width: 133px;
+    width: 142px;
 }

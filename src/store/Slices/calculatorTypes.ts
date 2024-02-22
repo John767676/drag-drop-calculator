@@ -1,8 +1,8 @@
 
 export interface CalculatorTypes {
-    firstNum: string | null,
-    secondNum: string | null,
+    firstNum: string,
+    secondNum: string,
     operation: 'plus' | 'minus' | 'div' | 'mul' | null,
-    result: number | string,
+    result: string | null,
     process: string
 }

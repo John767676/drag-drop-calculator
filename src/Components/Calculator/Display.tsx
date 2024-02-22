@@ -5,13 +5,29 @@ import '../Styles/display-styles.css';
 
 const Display:React.FC = () => {
 
-    const {result} = useAppSelector(state => state.calculator)
+    const {firstNum, secondNum, operation, result} = useAppSelector(state => state.calculator)
+
+    function displayNumCreator(string: string) {
+
+        const [integerPart, decimalPart] = string.split('.');
+
+        let formattedNumber = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        if (decimalPart) {
+            formattedNumber += `.${decimalPart}`;
+        } else if (string.endsWith('.')) {
+            formattedNumber += '.';
+        }
+
+        return formattedNumber;
+    }
+
+    const value = displayNumCreator(result !== null && operation === null && firstNum === '0' ? result : secondNum === '0' ? firstNum : secondNum)
 
     return (
             <div className="display__wrapper">
                 <div className="display__inner-wrapper">
-                    <span className="display__result" style={result.toString().length > 15 ? {justifyContent: 'flex-start', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '16px'} : undefined}>
-                        {result}
+                        <span className="display__result" style={value.length > 14 ? {fontSize: '19px'} : {fontSize: '24px'}}>
+                        {value}
                     </span>
                 </div>
             </div>

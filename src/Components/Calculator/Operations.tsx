@@ -31,7 +31,7 @@ const Operations:React.FC = () => {
 
     return (
         <div className="operations__wrapper">
-            {operations.map((operator,i) => (<OperatorItem symbol={operator.symbol} operation={operator.operation} key={i}/>))}
+            {operations.map((operator,i) => (<OperatorItem symbol={operator.symbol} mOperation={operator.operation} key={i}/>))}
         </div>
     );
 };
