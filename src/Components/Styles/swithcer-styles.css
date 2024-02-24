@@ -56,3 +56,18 @@
         width: 101px;
     }
 }
+
+@media (max-width: 376px) {
+    .switcher__wrapper {
+        width: 160px;
+        height: 24px;
+    }
+    .switcher__run, .switcher__con {
+        width: 71px;
+        height: 24px;
+        font-size: 12px;
+    }
+    .switcher__con {
+        width: 89px;
+    }
+}

@@ -176,7 +176,7 @@ const App:React.FC = () => {
                         </DragDropContext>
                         :
                         <>
-                            <div className='drag__wrapper' style={{justifyContent: 'start', gap: '16px'}}>
+                            <div className='drag__wrapper drag__wrapper-component'>
                                 {bricks[1].items.map(item => {
                                     switch (item.id) {
                                         case 'display':

@@ -34,3 +34,36 @@
     transform: translate(-50%, -50%);
     font-size: 16px;
 }
+
+@media (max-width: 768px) {
+    .operations__wrapper {
+        width: calc(240px / 1.2);
+        height: calc(57px / 1.2);
+    }
+    .operation__item {
+        width: calc(52px / 1.2);
+        height: calc(48px / 1.2);
+    }
+}
+
+@media (max-width: 576px) {
+    .operations__wrapper {
+        width: calc(240px / 1.4);
+        height: calc(57px / 1.4);
+    }
+    .operation__item {
+        width: calc(52px / 1.6);
+        height: calc(48px / 1.6);
+    }
+}
+
+@media (max-width: 376px) {
+    .operations__wrapper {
+        width: calc(240px / 1.6);
+        height: calc(57px / 1.6);
+    }
+    .operation__item {
+        width: calc(52px / 1.6);
+        height: calc(48px / 1.6);
+    }
+}

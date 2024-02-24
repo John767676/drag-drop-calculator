@@ -9,14 +9,21 @@
 
 @media (max-width: 768px) {
     .constructor__wrapper {
-        width: 210px;
-        height: 392px;
+        width: calc(252px / 1.2);
+        height: calc(470px / 1.2);
     }
 }
 
 @media (max-width: 576px) {
     .constructor__wrapper {
-        width: 180px;
-        height: 336px;
+        width: calc(252px / 1.4);
+        height: calc(470px / 1.4);
+    }
+}
+
+@media (max-width: 376px) {
+    .constructor__wrapper {
+        width: calc(252px / 1.6);
+        height: calc(470px / 1.6);
     }
 }

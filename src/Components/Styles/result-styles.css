@@ -35,3 +35,36 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media (max-width: 768px) {
+    .result__wrapper {
+        width: calc(240px / 1.2);
+        height: calc(73px / 1.2);
+    }
+    .result__inner-wrapper {
+        width: calc(232px / 1.2);
+        height: calc(64px / 1.2);
+    }
+}
+
+@media (max-width: 576px) {
+    .result__wrapper {
+        width: calc(240px / 1.4);
+        height: calc(73px / 1.4);
+    }
+    .result__inner-wrapper {
+        width: calc(232px / 1.4);
+        height: calc(64px / 1.4);
+    }
+}
+
+@media (max-width: 376px) {
+    .result__wrapper {
+        width: calc(240px / 1.6);
+        height: calc(73px / 1.6);
+    }
+    .result__inner-wrapper {
+        width: calc(232px / 1.6);
+        height: calc(64px / 1.6);
+    }
+}
