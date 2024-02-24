@@ -58,7 +58,7 @@
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     .result__wrapper {
         width: calc(240px / 1.6);
         height: calc(73px / 1.6);

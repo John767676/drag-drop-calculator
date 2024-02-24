@@ -57,7 +57,7 @@
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     .switcher__wrapper {
         width: 160px;
         height: 24px;

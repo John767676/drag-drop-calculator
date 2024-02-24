@@ -54,7 +54,7 @@ code {
   }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
   .brick__img {
     width: calc(252px / 1.6);
   }

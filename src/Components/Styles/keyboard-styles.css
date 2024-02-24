@@ -17,6 +17,7 @@
     border-radius: 5px;
     position: relative;
     transition: all 150ms ease-in-out;
+    user-select: none;
 }
 
 .keyboard__item-zero {
@@ -73,7 +74,7 @@
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     .keyboard__wrapper {
         width: calc(240px / 1.6);
         height: calc(225px / 1.6);

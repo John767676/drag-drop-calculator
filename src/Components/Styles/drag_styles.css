@@ -51,7 +51,7 @@
     }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 480px) {
     .drag__wrapper {
         width: calc(252px / 1.6);
         height: calc(470px / 1.6);
