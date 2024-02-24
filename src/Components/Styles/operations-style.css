@@ -65,6 +65,7 @@
     .operation__item {
         width: calc(52px / 1.6);
         height: calc(48px / 1.6);
+        cursor: default;
     }
     .operation__symbol {
         font-size: 12px;

@@ -8,7 +8,6 @@
     justify-items: center;
     align-items: center;
     user-select: none;
-    cursor: pointer;
 }
 .keyboard__item {
     width: 72px;
@@ -18,6 +17,7 @@
     position: relative;
     transition: all 150ms ease-in-out;
     user-select: none;
+    cursor: pointer;
 }
 
 .keyboard__item-zero {
@@ -82,6 +82,7 @@
     .keyboard__item {
         width: calc(72px / 1.6);
         height: calc(48px / 1.6);
+        cursor: default;
     }
     .keyboard__item-zero {
         width: calc(153px / 1.6);
