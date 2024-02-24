@@ -66,4 +66,7 @@
         width: calc(52px / 1.6);
         height: calc(48px / 1.6);
     }
+    .operation__symbol {
+        font-size: 12px;
+    }
 }

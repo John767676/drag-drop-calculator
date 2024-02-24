@@ -37,6 +37,9 @@ code {
   .brick__img {
     width: calc(252px / 1.2);
   }
+  .container__img:not(:first-child) {
+    margin-top: -1px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -46,6 +49,9 @@ code {
   .wrapper {
     gap: 25px;
   }
+  .container__img:not(:first-child) {
+    margin-top: -1.5px;
+  }
 }
 
 @media (max-width: 376px) {
@@ -54,5 +60,6 @@ code {
   }
   .wrapper {
     gap: 15px;
+    flex-direction: column;
   }
 }

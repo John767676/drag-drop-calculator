@@ -150,20 +150,26 @@ const App:React.FC = () => {
         setBricks(tempArray)
     }
 
+    function handleDragStart() {
+        if (window.navigator.vibrate) {
+            window.navigator.vibrate(100)
+        }
+    }
+
     return (
         <div className="layout">
             <div className="container">
                 <Switcher/>
                 <div className="wrapper">
                     {process === 'con' ?
-                        <DragDropContext onDragEnd={handleDragAndDrop}>
+                        <DragDropContext onDragEnd={handleDragAndDrop} onDragStart={handleDragStart}>
                             {bricks.map(brick => <Droppable droppableId={brick.id} type='brick' key={brick.id}>
                                 {provided => (
                                     <div className={brick.id === 'col-1' ? 'constructor__wrapper' : 'drag__wrapper'} style={brick.items.length > 0 ? {justifyContent: 'start'} : undefined} {...provided.droppableProps} ref={provided.innerRef}>
                                         {brick.items.length > 0 ? brick.items.map((el, index) =>
                                             <Draggable draggableId={el.id} index={index} key={el.id}>
                                                 {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => (
-                                                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onDoubleClick={brick.id === 'col-2' ? () => handleDoubleClick(el, index) : undefined}   style={getStyle(provided.draggableProps.style, snapshot)}>
+                                                    <div className='container__img' {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} onDoubleClick={brick.id === 'col-2' ? () => handleDoubleClick(el, index) : undefined} style={getStyle(provided.draggableProps.style, snapshot)}>
                                                         <img className='brick__img' src={require(`./Components/Bricks/${el.path}`)} alt={`${el.id}`}/>
                                                     </div>
                                                 )}
