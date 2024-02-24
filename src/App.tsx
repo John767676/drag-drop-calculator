@@ -10,7 +10,7 @@ import {
     Droppable,
     DropResult
 } from "react-beautiful-dnd";
-import EmptyDrag from "./EmptyDrag";
+import EmptyDrag from "./Components/EmptyDrag";
 import Switcher from "./Components/Switcher";
 import Display from "./Components/Calculator/Display";
 import Result from "./Components/Calculator/Result";
@@ -20,6 +20,7 @@ import Operations from "./Components/Calculator/Operations";
 
 const App:React.FC = () => {
 
+    if (window.innerWidth <= 480) console.log('111111111111')
 
     const {process} = useAppSelector(state => state.calculator)
 
