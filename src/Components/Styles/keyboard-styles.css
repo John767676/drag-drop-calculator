@@ -45,3 +45,9 @@
     transform: translate(-50%, -50%);
     font-weight: bold;
 }
+
+@media (max-width: 420px) {
+    .keyboard__item {
+        cursor: default;
+    }
+}

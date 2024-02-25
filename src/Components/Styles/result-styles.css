@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .result__inner-wrapper {
@@ -34,4 +35,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media (max-width: 420px) {
+    .result__wrapper {
+        cursor: default;
+    }
 }

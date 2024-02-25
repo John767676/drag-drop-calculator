@@ -8,7 +8,7 @@ const Result:React.FC = () => {
     const dispatch = useAppDispatch()
 
     return (
-        <div className="result__wrapper" style={{cursor: 'pointer'}}>
+        <div className="result__wrapper">
             <div className="result__inner-wrapper" onClick={() => dispatch(setResult())}>
                 <span className="result__value">
                     =
