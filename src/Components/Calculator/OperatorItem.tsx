@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAppDispatch} from "../../hooks/useAppDispatch";
-import {setOperationNum} from "../../store/Slices/calculatorSlice";
+import {setOperationNum} from "../../store/Slices/Calculator/calculatorSlice";
 import {useAppSelector} from "../../hooks/useAppSelector";
 
 interface OperationProps {

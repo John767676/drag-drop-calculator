@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import {calculatorReducer} from "./Slices/calculatorSlice";
+import {calculatorReducer} from "./Slices/Calculator/calculatorSlice";
+import {windowWidthReducer} from "./Slices/WindowSize/windowWidthSlice";
 
 const rootReducer = combineReducers({
     calculator: calculatorReducer,
+    width: windowWidthReducer
 })
 
 export const store = configureStore({

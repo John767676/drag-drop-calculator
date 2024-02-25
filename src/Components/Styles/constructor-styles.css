@@ -16,12 +16,12 @@
 
 @media (max-width: 576px) {
     .constructor__wrapper {
-        width: calc(252px / 1.4);
-        height: calc(470px / 1.4);
+        width: calc(252px / 1.6);
+        height: calc(470px / 1.6);
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
     .constructor__wrapper {
         width: calc(252px / 1.6);
         height: calc(470px / 1.6);

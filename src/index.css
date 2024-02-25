@@ -24,7 +24,7 @@ a {
 
 .layout {
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +52,7 @@ a {
 
 @media (max-width: 576px) {
   .brick__img {
-    width: calc(252px / 1.4);
+    width: calc(252px / 1.6);
   }
   .wrapper {
     gap: 25px;
@@ -62,7 +62,7 @@ a {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
   .brick__img {
     width: calc(252px / 1.6);
   }

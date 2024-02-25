@@ -23,36 +23,3 @@
     font-weight: bold;
     padding: 0 5px;
 }
-
-@media (max-width: 768px) {
-    .display__wrapper {
-        width: 200px;
-        height: 51px;
-    }
-    .display__inner-wrapper {
-        width: calc(232px / 1.2);
-        height: calc(52px / 1.2);
-    }
-}
-
-@media (max-width: 576px) {
-    .display__wrapper {
-        width: 171px;
-        height: 44px;
-    }
-    .display__inner-wrapper {
-        width: calc(232px / 1.4);
-        height: calc(52px / 1.4);
-    }
-}
-
-@media (max-width: 480px) {
-    .display__wrapper {
-        width: 150px;
-        height: 38px;
-    }
-    .display__inner-wrapper {
-        width: calc(232px / 1.6);
-        height: calc(52px / 1.6);
-    }
-}

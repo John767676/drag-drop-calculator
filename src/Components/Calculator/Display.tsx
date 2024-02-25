@@ -26,7 +26,7 @@ const Display:React.FC = () => {
     return (
             <div className="display__wrapper">
                 <div className="display__inner-wrapper">
-                        <span className="display__result" style={value.length > 14 ? {fontSize: '19px'} : {fontSize: '24px'}}>
+                        <span className="display__result" style={value.length > 14 ? {fontSize: '19 px'} : {fontSize: '24px'}}>
                         {value}
                     </span>
                 </div>

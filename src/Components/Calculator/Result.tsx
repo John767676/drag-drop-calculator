@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Styles/result-styles.css'
 import {useAppDispatch} from "../../hooks/useAppDispatch";
-import {setResult} from "../../store/Slices/calculatorSlice";
+import {setResult} from "../../store/Slices/Calculator/calculatorSlice";
 
 const Result:React.FC = () => {
 

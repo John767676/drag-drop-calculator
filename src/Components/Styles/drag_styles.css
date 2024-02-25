@@ -12,6 +12,13 @@
 .drag__wrapper-component {
     justify-content: start;
     gap: 16px;
+    width: 252px;
+    height: 470px;
+    border-radius: 6px;
+    border: 2px dashed #C4C4C4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .drag__text {
@@ -36,27 +43,13 @@
         width: calc(252px / 1.2);
         height: calc(470px / 1.2);
     }
-    .drag__wrapper-component {
-        gap: 13px
-    }
 }
 
 @media (max-width: 576px) {
     .drag__wrapper {
-        width: calc(252px / 1.4);
-        height: calc(470px / 1.4);
-    }
-    .drag__wrapper-component {
-        gap: 11px
-    }
-}
-
-@media (max-width: 480px) {
-    .drag__wrapper {
         width: calc(252px / 1.6);
         height: calc(470px / 1.6);
     }
-    .drag__wrapper-component {
-        gap: 10px;
-    }
 }
+
+

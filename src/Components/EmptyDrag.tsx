@@ -1,20 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import {useAppSelector} from "../hooks/useAppSelector";
 
 const EmptyDrag:React.FC = () => {
 
-        const [width, setWidth] = useState(window.innerWidth);
-
-        useEffect(() => {
-            const handleResize = () => {
-                setWidth(window.innerWidth);
-            };
-
-            window.addEventListener('resize', handleResize);
-
-            return () => {
-                window.removeEventListener('resize', handleResize);
-            };
-        }, []);
+    const {width} = useAppSelector(state => state.width)
 
     return (
         <>
@@ -26,7 +15,7 @@ const EmptyDrag:React.FC = () => {
                     Перетащите сюда
                 </h1>
                 <p className="drag__text-p">
-                    любой элемент <br/> из {width <= 480 ? 'верхней' : 'левой'} панели
+                    любой элемент <br/> из {width <= 420 ? 'верхней' : 'левой'} панели
                 </p>
             </div>
         </>

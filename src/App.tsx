@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Components/Styles/constructor-styles.css'
 import './Components/Styles/drag_styles.css'
 import {useAppSelector} from "./hooks/useAppSelector";
@@ -16,13 +16,16 @@ import Display from "./Components/Calculator/Display";
 import Result from "./Components/Calculator/Result";
 import Keyboard from "./Components/Calculator/Keyboard";
 import Operations from "./Components/Calculator/Operations";
+import {setWidth} from "./store/Slices/WindowSize/windowWidthSlice";
+import {useAppDispatch} from "./hooks/useAppDispatch";
 
 
 const App:React.FC = () => {
 
-    if (window.innerWidth <= 480) console.log('111111111111')
+    const dispatch = useAppDispatch()
 
     const {process} = useAppSelector(state => state.calculator)
+    const {width} = useAppSelector(state => state.width)
 
     type bricksType = {
         id: string,
@@ -157,6 +160,18 @@ const App:React.FC = () => {
         }
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+            dispatch(setWidth(window.innerWidth));
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <div className="layout">
             <div className="container">
@@ -183,7 +198,7 @@ const App:React.FC = () => {
                         </DragDropContext>
                         :
                         <>
-                            <div className='drag__wrapper drag__wrapper-component'>
+                            <div className='drag__wrapper-component'>
                                 {bricks[1].items.map(item => {
                                     switch (item.id) {
                                         case 'display':

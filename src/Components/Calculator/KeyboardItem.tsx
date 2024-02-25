@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAppDispatch} from "../../hooks/useAppDispatch";
-import {setNum} from "../../store/Slices/calculatorSlice";
+import {setNum} from "../../store/Slices/Calculator/calculatorSlice";
 
 interface KeyBoardItemProps {
     value: number | string
