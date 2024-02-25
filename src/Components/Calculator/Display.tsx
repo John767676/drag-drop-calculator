@@ -6,6 +6,7 @@ import '../Styles/display-styles.css';
 const Display:React.FC = () => {
 
     const {firstNum, secondNum, operation, result} = useAppSelector(state => state.calculator)
+    const {width} = useAppSelector(state => state.width)
 
     function displayNumCreator(string: string) {
 
@@ -26,7 +27,7 @@ const Display:React.FC = () => {
     return (
             <div className="display__wrapper">
                 <div className="display__inner-wrapper">
-                        <span className="display__result" style={value.length > 14 ? {fontSize: '19 px'} : {fontSize: '24px'}}>
+                        <span className="display__result" style={width <= 420 && value.length < 14 ? {fontSize: 18} : width<= 420 && value.length > 14 ? {fontSize: 16} : width > 420 && value.length < 14 ? {fontSize: 24} : {fontSize: 19}}>
                         {value}
                     </span>
                 </div>
