@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {windowWidthType} from "./windowWidthType";
 
 const initialState: windowWidthType = {
-    width: 0
+    width: window.innerWidth
 }
 
 const windowWidthSlice = createSlice({

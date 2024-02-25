@@ -25,7 +25,6 @@ const App:React.FC = () => {
     const dispatch = useAppDispatch()
 
     const {process} = useAppSelector(state => state.calculator)
-    const {width} = useAppSelector(state => state.width)
 
     type bricksType = {
         id: string,
@@ -197,24 +196,22 @@ const App:React.FC = () => {
                             </Droppable>)}
                         </DragDropContext>
                         :
-                        <>
-                            <div className='drag__wrapper-component'>
-                                {bricks[1].items.map(item => {
-                                    switch (item.id) {
-                                        case 'display':
-                                            return <Display key={item.id}/>
-                                        case 'operations':
-                                            return <Operations key={item.id}/>
-                                        case 'keyboard':
-                                            return <Keyboard key={item.id}/>
-                                        case 'result':
-                                            return <Result key={item.id}/>
-                                        default:
-                                            return null
+                        <div className='drag__wrapper-component'>
+                            {bricks[1].items.map(item => {
+                                switch (item.id) {
+                                    case 'display':
+                                        return <Display key={item.id}/>
+                                    case 'operations':
+                                        return <Operations key={item.id}/>
+                                    case 'keyboard':
+                                        return <Keyboard key={item.id}/>
+                                    case 'result':
+                                        return <Result key={item.id}/>
+                                    default:
+                                        return null
                                     }
                                 })}
-                            </div>
-                        </>
+                        </div>
                     }
                 </div>
             </div>
